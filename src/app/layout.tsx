@@ -2,13 +2,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
+import { Epilogue, Sora } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], 
+// Sora for body text
+const sora = Sora({
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
- });
+  variable: "--font-sora",
+});
+
+// Epilogue for headings
+const epilogue = Epilogue({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-epilogue",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +38,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
+        <body className={`${sora.variable} ${epilogue.variable} font-sans`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
