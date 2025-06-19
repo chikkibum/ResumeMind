@@ -42,17 +42,17 @@ export default function ResumeItem({ resume }: ResumeItemProps) {
   const wasUpdated = resume.updatedAt !== resume.createdAt;
 
   return (
-    <div className="group relative rounded-lg border border-transparent bg-secondary p-3 transition-colors hover:border-border">
+    <div className="group relative overflow-hidden rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
       <div className="space-y-3">
         <Link
           href={`/editor?resumeId=${resume.id}`}
           className="inline-block w-full text-center"
         >
-          <p className="line-clamp-1 font-semibold">
+          <p className="line-clamp-1 font-bold">
             {resume.title || "No title"}
           </p>
           {resume.description && (
-            <p className="line-clamp-2 text-sm">{resume.description}</p>
+            <p className="line-clamp-2 text-sm text-muted-foreground">{resume.description}</p>
           )}
           <p className="text-xs text-muted-foreground">
             {wasUpdated ? "Updated" : "Created"} on{" "}
@@ -63,12 +63,14 @@ export default function ResumeItem({ resume }: ResumeItemProps) {
           href={`/editor?resumeId=${resume.id}`}
           className="relative inline-block w-full"
         >
-          <ResumePreview
-            resumeData={mapToResumeValues(resume)}
-            contentRef={contentRef}
-            className="overflow-hidden shadow-sm transition-shadow group-hover:shadow-lg"
-          />
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
+          <div className="overflow-hidden rounded-base border-2 border-border">
+            <ResumePreview
+              resumeData={mapToResumeValues(resume)}
+              contentRef={contentRef}
+              className="transition-transform group-hover:scale-[1.02]"
+            />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-secondary-background to-transparent" />
         </Link>
       </div>
       <MoreMenu resumeId={resume.id} onPrintClick={reactToPrintFn} />
@@ -89,9 +91,9 @@ function MoreMenu({ resumeId, onPrintClick }: MoreMenuProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
-            variant="ghost"
+            variant="outline"
             size="icon"
-            className="absolute right-0.5 top-0.5 opacity-0 transition-opacity group-hover:opacity-100"
+            className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100"
           >
             <MoreVertical className="size-4" />
           </Button>
@@ -170,7 +172,7 @@ function DeleteConfirmationDialog({
           >
             Delete
           </LoadingButton>
-          <Button variant="secondary" onClick={() => onOpenChange(false)}>
+          <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
         </DialogFooter>

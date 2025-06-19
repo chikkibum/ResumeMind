@@ -13,16 +13,18 @@ export default function Navbar() {
   const { theme } = useTheme();
 
   return (
-    <header className="shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 p-3">
-        <Link href="/resumes" className="flex items-center gap-2">
-          <Image
-            src={logo}
-            alt="Logo"
-            width={35}
-            height={35}
-            className="rounded-full"
-          />
+    <header className="border-b-2 border-border bg-secondary-background">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 p-4">
+        <Link href="/resumes" className="flex items-center gap-3">
+          <div className="overflow-hidden rounded-base border-2 border-border">
+            <Image
+              src={logo}
+              alt="Logo"
+              width={40}
+              height={40}
+              className="object-cover"
+            />
+          </div>
           <span className="text-xl font-bold tracking-tight">
             AI Resume Builder
           </span>
@@ -34,8 +36,8 @@ export default function Navbar() {
               baseTheme: theme === "dark" ? dark : undefined,
               elements: {
                 avatarBox: {
-                  width: 35,
-                  height: 35,
+                  width: 40,
+                  height: 40,
                 },
               },
             }}
