@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+rewrite-git-history.sh
 
 # debug
 npm-debug.log*
