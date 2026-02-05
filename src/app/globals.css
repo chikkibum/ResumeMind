@@ -88,6 +88,13 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-background text-foreground font-medium;
   }
@@ -99,6 +106,49 @@
   h5,
   h6 {
     @apply font-heading font-bold;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Focus visible styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-main text-main-foreground;
+  }
+
+  /* Neobrutalist Scrollbar */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary-background border-border;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-main border-2 border-border;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-main;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-secondary-background border-2 border-border;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--main) var(--secondary-background);
   }
 }
 
