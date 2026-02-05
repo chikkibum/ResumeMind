@@ -5,6 +5,8 @@ import {
   TestimonialsSection,
   StatsSection,
   PricingSection,
+  FAQSection,
+  SafariShowcaseSection,
   FooterSection,
 } from "@/components/landing";
 
@@ -18,9 +20,11 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <ShowcaseSection />
+      <SafariShowcaseSection />
       <TestimonialsSection />
       <StatsSection />
       <PricingSection />
+      <FAQSection />
       <FooterSection />
     </main>
   );

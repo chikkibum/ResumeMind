@@ -41,7 +41,8 @@ export default function RootLayout({
         <body className={`${sora.variable} ${epilogue.variable} font-sans`}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
+            forcedTheme="light"
             enableSystem
             disableTransitionOnChange
           >
