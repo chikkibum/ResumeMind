@@ -8,39 +8,41 @@ import { TYPOGRAPHY, FEATURES, FEATURE_COLORS } from "@/lib/constants";
 
 /**
  * Features section with staggered card animations
+ * Premium typography hierarchy and refined spacing
  */
 export default function FeaturesSection() {
     const shouldReduceMotion = useReducedMotion();
 
     return (
-        <section id="features" className="bg-secondary py-24 md:py-32">
+        <section id="features" className="bg-secondary py-28 md:py-36">
             <MaxWidthWrapper>
-                {/* Section header */}
+                {/* Section header with refined hierarchy */}
                 <motion.div
-                    className="mx-auto mb-16 max-w-2xl text-center"
+                    className="mx-auto mb-20 max-w-2xl text-center"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                     variants={shouldReduceMotion ? {} : fadeInUp}
                 >
-                    <span className="mb-4 inline-block rounded-base border-2 border-border bg-main px-3 py-1 text-sm font-bold text-main-foreground">
+                    <span className={`mb-4 inline-block rounded-base border-2 border-border bg-main px-3 py-1.5 text-main-foreground ${TYPOGRAPHY.eyebrow}`}>
                         Features
                     </span>
-                    <h2 className={TYPOGRAPHY.h1}>
+                    <h2 className={`mt-4 ${TYPOGRAPHY.h1}`}>
                         Everything You Need to{" "}
-                        <span className="underline decoration-main decoration-4 underline-offset-4">
-                            Land the Job
+                        <span className="relative inline-block">
+                            <span className="relative z-10">Land the Job</span>
+                            <span className="absolute bottom-1 left-0 -z-0 h-3 w-full bg-main opacity-40" />
                         </span>
                     </h2>
-                    <p className="mt-4 text-muted-foreground text-base md:text-lg">
+                    <p className="mt-6 text-muted-foreground text-base md:text-lg leading-relaxed">
                         Our AI-powered platform provides all the tools you need to create
                         professional resumes that get noticed by recruiters.
                     </p>
                 </motion.div>
 
-                {/* Features grid */}
+                {/* Features grid with refined gap */}
                 <motion.div
-                    className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                    className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"

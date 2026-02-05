@@ -11,4 +11,8 @@ export { default as ShowcaseSection } from "./ShowcaseSection";
 export { default as TestimonialsSection } from "./TestimonialsSection";
 export { default as StatsSection } from "./StatsSection";
 export { default as PricingSection } from "./PricingSection";
+export { default as FAQSection } from "./FAQSection";
+export { default as SafariShowcaseSection } from "./SafariShowcaseSection";
+export { default as AnimatedFeatureList } from "./AnimatedFeatureList";
+export { default as RemotionBackground } from "./RemotionBackground";
 export { default as FooterSection } from "./FooterSection";

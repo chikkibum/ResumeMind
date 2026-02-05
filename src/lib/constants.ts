@@ -10,15 +10,17 @@ export const SPACING = {
     container: "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
 } as const;
 
-// Typography sizes
+// Typography sizes with refined hierarchy
 export const TYPOGRAPHY = {
-    hero: "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight",
-    h1: "text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight",
-    h2: "text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight",
-    h3: "text-xl sm:text-2xl font-bold",
-    body: "text-base md:text-lg",
-    bodyLarge: "text-lg md:text-xl",
-    small: "text-sm",
+    hero: "text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.02em] leading-[0.95]",
+    h1: "text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.015em] leading-[1.1]",
+    h2: "text-2xl sm:text-3xl md:text-4xl font-bold tracking-[-0.01em] leading-[1.15]",
+    h3: "text-xl sm:text-2xl font-bold tracking-tight leading-[1.2]",
+    body: "text-base md:text-lg leading-relaxed",
+    bodyLarge: "text-lg md:text-xl leading-relaxed",
+    small: "text-sm leading-relaxed",
+    eyebrow: "text-xs sm:text-sm font-bold uppercase tracking-[0.15em]",
+    caption: "text-xs font-medium text-muted-foreground tracking-wide",
 } as const;
 
 // Neobrutalist border styles
@@ -171,3 +173,61 @@ export const FOOTER_LINKS = {
         { label: "Cookies", href: "/cookies" },
     ],
 } as const;
+
+// FAQ data for landing page
+export const FAQ = [
+    {
+        question: "Is the AI Resume Builder really free?",
+        answer: "Yes! You can create your first resume completely free. Our free tier includes 1 resume, basic templates, and PDF export. Upgrade to Pro for unlimited resumes and advanced AI features.",
+    },
+    {
+        question: "How does the AI writing assistant work?",
+        answer: "Our AI analyzes your experience and generates professional bullet points optimized for ATS systems. Simply describe your role, and the AI crafts compelling, achievement-focused content that highlights your impact.",
+    },
+    {
+        question: "Will my resume pass ATS screening?",
+        answer: "Absolutely. All our templates are designed to be ATS-compatible. The AI also suggests keywords relevant to your industry, ensuring your resume gets past automated screening systems.",
+    },
+    {
+        question: "Can I customize the templates?",
+        answer: "Yes! Every template is fully customizable. Adjust colors, fonts, spacing, and layout to match your personal brand while maintaining professional standards.",
+    },
+    {
+        question: "What file formats can I export?",
+        answer: "Export your resume as a high-quality PDF, perfect for job applications. Pro users can also share via custom links and access additional format options.",
+    },
+    {
+        question: "Is my data secure?",
+        answer: "Your privacy is our priority. All data is encrypted, never sold, and you can delete your account and data at any time. We comply with GDPR and other privacy regulations.",
+    },
+] as const;
+
+// Animated features for feature showcase
+export const ANIMATED_FEATURES = [
+    {
+        icon: "wand-2",
+        title: "AI-Powered Content",
+        description: "Generate professional bullet points with one click",
+    },
+    {
+        icon: "layout-template",
+        title: "Modern Templates",
+        description: "Professionally designed, ATS-optimized layouts",
+    },
+    {
+        icon: "zap",
+        title: "Real-Time Preview",
+        description: "See changes instantly as you type",
+    },
+    {
+        icon: "download",
+        title: "Easy Export",
+        description: "Download as PDF or share via link",
+    },
+    {
+        icon: "shield-check",
+        title: "ATS Optimized",
+        description: "Beat applicant tracking systems every time",
+    },
+] as const;
+

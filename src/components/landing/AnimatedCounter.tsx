@@ -71,7 +71,7 @@ export default function AnimatedCounter({
             className="text-center"
             variants={fadeInUp}
         >
-            <div className="mb-2 text-4xl font-bold text-main md:text-5xl lg:text-6xl">
+            <div className="mb-2 text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
                 {formattedValue}
                 <span className="text-foreground">{suffix}</span>
             </div>

@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { fadeInUp, staggerContainer } from "@/lib/animations/variants";
-import { FOOTER_LINKS } from "@/lib/constants";
+import { FOOTER_LINKS, TYPOGRAPHY } from "@/lib/constants";
 import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/resumeMind.jpeg";
 
 const SOCIAL_LINKS = [
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -18,6 +18,7 @@ const SOCIAL_LINKS = [
 
 /**
  * Footer section with links and social icons
+ * Premium link hover states and refined layout balance
  */
 export default function FooterSection() {
     const shouldReduceMotion = useReducedMotion();
@@ -29,7 +30,7 @@ export default function FooterSection() {
             : fadeInUp;
 
     return (
-        <footer className="border-t-2 border-border bg-secondary-background py-16 md:py-20">
+        <footer className="border-t-2 border-border bg-secondary-background py-16 md:py-24">
             <MaxWidthWrapper>
                 <motion.div
                     className="grid gap-12 md:grid-cols-2 lg:grid-cols-6"
@@ -43,8 +44,8 @@ export default function FooterSection() {
                         className="lg:col-span-2"
                         variants={getVariants()}
                     >
-                        <Link href="/" className="mb-4 flex items-center gap-3">
-                            <div className="overflow-hidden rounded-base border-2 border-border">
+                        <Link href="/" className="mb-6 flex items-center gap-3 group">
+                            <div className="overflow-hidden rounded-base border-2 border-border transition-transform duration-300 group-hover:scale-105">
                                 <Image
                                     src={logo}
                                     alt="ResumeMind"
@@ -53,13 +54,13 @@ export default function FooterSection() {
                                     className="object-cover"
                                 />
                             </div>
-                            <span className="text-xl font-bold">ResumeMind</span>
+                            <span className="text-xl font-bold tracking-tight">ResumeMind</span>
                         </Link>
-                        <p className="mb-6 max-w-sm text-sm text-muted-foreground">
+                        <p className="mb-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
                             Build professional resumes in minutes with our AI-powered builder.
                             Land your dream job faster.
                         </p>
-                        {/* Social icons */}
+                        {/* Social icons with refined hover */}
                         <div className="flex gap-3">
                             {SOCIAL_LINKS.map((social) => (
                                 <a
@@ -68,7 +69,7 @@ export default function FooterSection() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={social.label}
-                                    className="flex h-10 w-10 items-center justify-center rounded-base border-2 border-border bg-background shadow-[2px_2px_0px_0px_var(--border)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                                    className="flex h-10 w-10 items-center justify-center rounded-base border-2 border-border bg-background shadow-[2px_2px_0px_0px_var(--border)] transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none hover:bg-main hover:text-main-foreground"
                                 >
                                     <social.icon className="h-5 w-5" />
                                 </a>
@@ -76,16 +77,16 @@ export default function FooterSection() {
                         </div>
                     </motion.div>
 
-                    {/* Link columns */}
+                    {/* Link columns with refined hover */}
                     {Object.entries(FOOTER_LINKS).map(([category, links]) => (
                         <motion.div key={category} variants={getVariants()}>
-                            <h3 className="mb-4 font-bold capitalize">{category}</h3>
+                            <h3 className={`mb-5 capitalize ${TYPOGRAPHY.eyebrow}`}>{category}</h3>
                             <ul className="space-y-3">
                                 {links.map((link) => (
                                     <li key={link.label}>
                                         <Link
                                             href={link.href}
-                                            className="text-sm text-muted-foreground transition-colors hover:text-foreground hover:underline"
+                                            className="text-sm text-muted-foreground transition-all duration-200 hover:text-foreground hover:translate-x-1 inline-block"
                                         >
                                             {link.label}
                                         </Link>
@@ -98,7 +99,7 @@ export default function FooterSection() {
 
                 {/* Bottom bar */}
                 <motion.div
-                    className="mt-12 flex flex-col items-center justify-between gap-4 border-t-2 border-border pt-8 md:flex-row"
+                    className="mt-16 flex flex-col items-center justify-between gap-4 border-t-2 border-border pt-8 md:flex-row"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -107,16 +108,16 @@ export default function FooterSection() {
                     <p className="text-sm text-muted-foreground">
                         © {currentYear} ResumeMind. All rights reserved.
                     </p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-6">
                         <Link
                             href="/privacy"
-                            className="text-sm text-muted-foreground hover:text-foreground hover:underline"
+                            className="text-sm text-muted-foreground transition-all duration-200 hover:text-foreground"
                         >
                             Privacy Policy
                         </Link>
                         <Link
                             href="/tos"
-                            className="text-sm text-muted-foreground hover:text-foreground hover:underline"
+                            className="text-sm text-muted-foreground transition-all duration-200 hover:text-foreground"
                         >
                             Terms of Service
                         </Link>

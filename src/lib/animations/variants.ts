@@ -8,13 +8,19 @@ import { Variants, Transition } from "motion/react";
 // Default spring transition for smooth, natural animations
 export const springTransition: Transition = {
     type: "spring",
-    stiffness: 300,
-    damping: 30,
+    stiffness: 260,
+    damping: 25,
 };
 
-// Default ease transition for simpler animations
+// Premium ease-out curve (Apple-style)
 export const easeTransition: Transition = {
-    duration: 0.5,
+    duration: 0.6,
+    ease: [0.22, 1, 0.36, 1],
+};
+
+// Fast ease for micro-interactions
+export const fastEase: Transition = {
+    duration: 0.2,
     ease: [0.25, 0.1, 0.25, 1],
 };
 
@@ -22,11 +28,13 @@ export const easeTransition: Transition = {
 export const fadeInUp: Variants = {
     hidden: {
         opacity: 0,
-        y: 40,
+        y: 30,
+        filter: "blur(4px)",
     },
     visible: {
         opacity: 1,
         y: 0,
+        filter: "blur(0px)",
         transition: easeTransition,
     },
 };
@@ -94,15 +102,31 @@ export const slowStaggerContainer: Variants = {
     },
 };
 
-// Hover scale effect for buttons and cards
+// Hover scale effect for buttons and cards - refined subtle scale
 export const hoverScale = {
-    scale: 1.02,
-    transition: { duration: 0.2 },
+    scale: 1.015,
+    transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
 };
 
-// Tap scale effect for buttons
+// Tap scale effect for buttons - more responsive
 export const tapScale = {
-    scale: 0.98,
+    scale: 0.985,
+    transition: { duration: 0.1 },
+};
+
+// Subtle scale for cards - very refined
+export const subtleScale: Variants = {
+    rest: { scale: 1 },
+    hover: {
+        scale: 1.02,
+        transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    },
+};
+
+// Icon micro-interaction
+export const iconBounce = {
+    rotate: [0, -10, 10, 0],
+    transition: { duration: 0.4, ease: "easeInOut" },
 };
 
 // Neobrutalist press effect (simulates shadow removal)
@@ -174,4 +198,36 @@ export const getReducedMotionVariants = (variants: Variants): Variants => {
         };
     }
     return variants;
+};
+// Accordion content height animation
+export const accordionContent: Variants = {
+    hidden: { height: 0, opacity: 0 },
+    visible: {
+        height: "auto",
+        opacity: 1,
+        transition: {
+            height: {
+                duration: 0.3,
+            },
+            opacity: {
+                duration: 0.2,
+                delay: 0.1,
+            },
+        },
+    },
+};
+
+// Staggered reveal for lists
+export const staggeredReveal: Variants = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: (i: number) => ({
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+            delay: i * 0.1,
+            duration: 0.5,
+            ease: "easeOut",
+        },
+    }),
 };

@@ -8,16 +8,17 @@ import { TYPOGRAPHY, TESTIMONIALS } from "@/lib/constants";
 
 /**
  * Testimonials section with scroll-triggered animations
+ * Premium typography and refined visual hierarchy
  */
 export default function TestimonialsSection() {
     const shouldReduceMotion = useReducedMotion();
 
     return (
-        <section className="bg-secondary py-24 md:py-32">
+        <section className="bg-secondary py-28 md:py-36">
             <MaxWidthWrapper>
-                {/* Section header */}
+                {/* Section header with refined hierarchy */}
                 <motion.div
-                    className="mx-auto mb-16 max-w-2xl text-center"
+                    className="mx-auto mb-20 max-w-2xl text-center"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
@@ -27,17 +28,18 @@ export default function TestimonialsSection() {
                             : fadeInUp
                     }
                 >
-                    <span className="mb-4 inline-block rounded-base border-2 border-border bg-chart-4 px-3 py-1 text-sm font-bold text-main-foreground">
+                    <span className={`mb-4 inline-block rounded-base border-2 border-border bg-chart-4 px-3 py-1.5 text-main-foreground ${TYPOGRAPHY.eyebrow}`}>
                         Testimonials
                     </span>
-                    <h2 className={TYPOGRAPHY.h1}>
+                    <h2 className={`mt-4 ${TYPOGRAPHY.h1}`}>
                         Loved by{" "}
-                        <span className="underline decoration-main decoration-4 underline-offset-4">
-                            50,000+
+                        <span className="relative inline-block">
+                            <span className="relative z-10">50,000+</span>
+                            <span className="absolute bottom-1 left-0 -z-0 h-3 w-full bg-main opacity-40" />
                         </span>{" "}
                         Job Seekers
                     </h2>
-                    <p className="mt-4 text-muted-foreground text-base md:text-lg">
+                    <p className="mt-6 text-muted-foreground text-base md:text-lg leading-relaxed">
                         See what our users have to say about their experience with ResumeMind.
                     </p>
                 </motion.div>

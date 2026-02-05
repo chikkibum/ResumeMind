@@ -5,7 +5,13 @@ import BrowserMockup from "./BrowserMockup";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { fadeInUp, fadeInLeft, fadeInRight } from "@/lib/animations/variants";
 import { TYPOGRAPHY } from "@/lib/constants";
-import { Check, Sparkles } from "lucide-react";
+import {
+    ContextMenu,
+    ContextMenuContent,
+    ContextMenuItem,
+    ContextMenuTrigger,
+} from "@/components/ui/context-menu";
+import { Check, Sparkles, Copy, Share2, Info } from "lucide-react";
 
 /**
  * Platform showcase section with browser mockup
@@ -75,20 +81,37 @@ export default function ShowcaseSection() {
                                         "Templates designed to pass applicant tracking systems.",
                                 },
                             ].map((item) => (
-                                <div
-                                    key={item.title}
-                                    className="flex gap-4 rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
-                                >
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-base border-2 border-border bg-main">
-                                        <Check className="h-5 w-5 text-main-foreground" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold">{item.title}</h3>
-                                        <p className="text-sm text-muted-foreground">
-                                            {item.description}
-                                        </p>
-                                    </div>
-                                </div>
+                                <ContextMenu key={item.title}>
+                                    <ContextMenuTrigger>
+                                        <div
+                                            className="flex gap-4 rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none cursor-context-menu"
+                                        >
+                                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-base border-2 border-border bg-main">
+                                                <Check className="h-5 w-5 text-main-foreground" />
+                                            </div>
+                                            <div>
+                                                <h3 className="font-bold">{item.title}</h3>
+                                                <p className="text-sm text-muted-foreground">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ContextMenuTrigger>
+                                    <ContextMenuContent>
+                                        <ContextMenuItem>
+                                            <Info className="mr-2 h-4 w-4" />
+                                            View Details
+                                        </ContextMenuItem>
+                                        <ContextMenuItem>
+                                            <Copy className="mr-2 h-4 w-4" />
+                                            Copy Text
+                                        </ContextMenuItem>
+                                        <ContextMenuItem>
+                                            <Share2 className="mr-2 h-4 w-4" />
+                                            Share Feature
+                                        </ContextMenuItem>
+                                    </ContextMenuContent>
+                                </ContextMenu>
                             ))}
                         </div>
                     </motion.div>
