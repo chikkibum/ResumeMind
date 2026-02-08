@@ -25,7 +25,7 @@ export default function ResumePreview({
   return (
     <div
       className={cn(
-        "aspect-[210/297] h-fit w-full bg-white text-black",
+        "aspect-[210/297] font-sans! h-fit w-full bg-white text-black overflow-hidden",
         className,
       )}
       ref={containerRef}
@@ -76,7 +76,7 @@ function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
   }, [photo]);
 
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex font-sans items-center gap-6">
       {photoSrc && (
         <Image
           src={photoSrc}
@@ -138,7 +138,7 @@ function SummarySection({ resumeData }: ResumeSectionProps) {
           borderColor: colorHex,
         }}
       />
-      <div className="break-inside-avoid space-y-3">
+      <div className="break-inside-avoid font-sans space-y-3">
         <p
           className="text-lg font-semibold"
           style={{
@@ -170,7 +170,7 @@ function WorkExperienceSection({ resumeData }: ResumeSectionProps) {
           borderColor: colorHex,
         }}
       />
-      <div className="space-y-3">
+      <div className="space-y-3 font-sans">
         <p
           className="text-lg font-semibold"
           style={{
@@ -221,7 +221,7 @@ function EducationSection({ resumeData }: ResumeSectionProps) {
           borderColor: colorHex,
         }}
       />
-      <div className="space-y-3">
+      <div className="space-y-3 font-sans">
         <p
           className="text-lg font-semibold"
           style={{
@@ -267,7 +267,7 @@ function SkillsSection({ resumeData }: ResumeSectionProps) {
           borderColor: colorHex,
         }}
       />
-      <div className="break-inside-avoid space-y-3">
+      <div className="break-inside-avoid font-sans space-y-3">
         <p
           className="text-lg font-semibold"
           style={{

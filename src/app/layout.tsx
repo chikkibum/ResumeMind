@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { Epilogue, Sora } from "next/font/google";
 import "./globals.css";
 
+
 // Sora for body text
 const sora = Sora({
   subsets: ["latin"],

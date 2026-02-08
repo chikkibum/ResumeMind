@@ -67,7 +67,7 @@ export default function ResumeItem({ resume }: ResumeItemProps) {
             <ResumePreview
               resumeData={mapToResumeValues(resume)}
               contentRef={contentRef}
-              className="transition-transform group-hover:scale-[1.02]"
+              className="transition-transform font-sans group-hover:scale-[1.02]"
             />
           </div>
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-secondary-background to-transparent" />
