@@ -40,7 +40,7 @@ const FeatureItem = ({ title, description, icon, color }: FeatureItemProps) => {
 export default function AnimatedFeatureList() {
     return (
         <div className="relative h-[400px] w-full max-w-lg overflow-hidden py-4">
-            <AnimatedList delay={2500}>
+            <AnimatedList delay={2500} >
                 {ANIMATED_FEATURES.map((feature, idx) => (
                     <FeatureItem
                         key={feature.title}

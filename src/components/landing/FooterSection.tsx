@@ -5,20 +5,18 @@ import Link from "next/link";
 import Image from "next/image";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { fadeInUp, staggerContainer } from "@/lib/animations/variants";
-import { FOOTER_LINKS, TYPOGRAPHY } from "@/lib/constants";
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Twitter, Linkedin, Instagram, Github } from "lucide-react";
 import logo from "@/assets/resumeMind.jpeg";
 
 const SOCIAL_LINKS = [
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: Twitter, href: "https://x.com/Bhaskar_690", label: "X" },
+    { icon: Linkedin, href: "https://linkedin.com/in/dev-bhaskar", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/chikkibum", label: "Github" },
 ];
 
 /**
- * Footer section with links and social icons
- * Premium link hover states and refined layout balance
+ * Footer section with brand info and social icons
+ * Clean layout with left-aligned brand and right-aligned socials
  */
 export default function FooterSection() {
     const shouldReduceMotion = useReducedMotion();
@@ -30,37 +28,42 @@ export default function FooterSection() {
             : fadeInUp;
 
     return (
-        <footer className="border-t-2 border-border bg-secondary-background py-16 md:py-24">
+        <footer className="border-t-2 border-border bg-main py-12 md:py-16">
             <MaxWidthWrapper>
                 <motion.div
-                    className="grid gap-12 md:grid-cols-2 lg:grid-cols-6"
+                    className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
                     variants={staggerContainer}
                 >
-                    {/* Brand column */}
+                    {/* Brand section - Left */}
                     <motion.div
-                        className="lg:col-span-2"
+                        className="max-w-md"
                         variants={getVariants()}
                     >
-                        <Link href="/" className="mb-6 flex items-center gap-3 group">
-                            <div className="overflow-hidden rounded-base border-2 border-border transition-transform duration-300 group-hover:scale-105">
+                        <Link href="/" className="mb-5 flex items-center gap-3 group">
+                            <div className="overflow-hidden rounded-base border-2 border-border bg-background transition-transform duration-300 group-hover:scale-105 shadow-shadow">
                                 <Image
                                     src={logo}
                                     alt="ResumeMind"
-                                    width={40}
-                                    height={40}
+                                    width={48}
+                                    height={48}
                                     className="object-cover"
                                 />
                             </div>
-                            <span className="text-xl font-bold tracking-tight">ResumeMind</span>
+                            <span className="text-2xl font-black tracking-tight text-main-foreground">ResumeMind</span>
                         </Link>
-                        <p className="mb-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                            Build professional resumes in minutes with our AI-powered builder.
-                            Land your dream job faster.
+                        <p className="text-sm leading-relaxed text-main-foreground/80">
+                            Build professional, ATS-optimized resumes in minutes with our AI-powered builder. Land your dream job faster. ✨
                         </p>
-                        {/* Social icons with refined hover */}
+                    </motion.div>
+
+                    {/* Social icons - Right */}
+                    <motion.div
+                        className="flex flex-col items-start gap-6 md:items-end"
+                        variants={getVariants()}
+                    >
                         <div className="flex gap-3">
                             {SOCIAL_LINKS.map((social) => (
                                 <a
@@ -69,57 +72,38 @@ export default function FooterSection() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={social.label}
-                                    className="flex h-10 w-10 items-center justify-center rounded-base border-2 border-border bg-background shadow-[2px_2px_0px_0px_var(--border)] transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none hover:bg-main hover:text-main-foreground"
+                                    className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-border bg-background shadow-[3px_3px_0px_0px_var(--border)] transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none hover:bg-main-foreground hover:text-main"
                                 >
                                     <social.icon className="h-5 w-5" />
                                 </a>
                             ))}
                         </div>
                     </motion.div>
-
-                    {/* Link columns with refined hover */}
-                    {Object.entries(FOOTER_LINKS).map(([category, links]) => (
-                        <motion.div key={category} variants={getVariants()}>
-                            <h3 className={`mb-5 capitalize ${TYPOGRAPHY.eyebrow}`}>{category}</h3>
-                            <ul className="space-y-3">
-                                {links.map((link) => (
-                                    <li key={link.label}>
-                                        <Link
-                                            href={link.href}
-                                            className="text-sm text-muted-foreground transition-all duration-200 hover:text-foreground hover:translate-x-1 inline-block"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    ))}
                 </motion.div>
 
                 {/* Bottom bar */}
                 <motion.div
-                    className="mt-16 flex flex-col items-center justify-between gap-4 border-t-2 border-border pt-8 md:flex-row"
+                    className="mt-12 flex flex-col items-center justify-between gap-4 border-t-2 border-border/30 pt-6 md:flex-row"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={getVariants()}
                 >
-                    <p className="text-sm text-muted-foreground">
-                        © {currentYear} ResumeMind. All rights reserved.
+                    <p className="text-sm text-main-foreground/70">
+                        © {currentYear} ResumeMind | Built with ❤️ by Bhaskar
                     </p>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-4 md:gap-6">
                         <Link
                             href="/privacy"
-                            className="text-sm text-muted-foreground transition-all duration-200 hover:text-foreground"
+                            className="text-sm text-main-foreground/70 underline-offset-2 transition-all duration-200 hover:text-main-foreground hover:underline"
                         >
-                            Privacy Policy
+                            Privacy policy
                         </Link>
                         <Link
                             href="/tos"
-                            className="text-sm text-muted-foreground transition-all duration-200 hover:text-foreground"
+                            className="text-sm text-main-foreground/70 underline-offset-2 transition-all duration-200 hover:text-main-foreground hover:underline"
                         >
-                            Terms of Service
+                            Terms of use
                         </Link>
                     </div>
                 </motion.div>
